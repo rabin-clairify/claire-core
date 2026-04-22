@@ -1,0 +1,127 @@
+{
+"meta":{
+"lastTouchedVersion": "2026.4.14",
+    "lastTouchedAt": "2026-04-15T06:08:57.749Z"
+  },
+  "auth": {
+    "profiles": {
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "token"
+      },
+      "xai:default": {
+        "provider": "xai",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://172.17.0.1:11434/v1",
+        "apiKey": "ollama",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3.5:9b",
+            "name": "Qwen 3.5 9b (Local - Ollama)",
+            "api": "openai-completions",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 32768,
+            "maxTokens": 4096
+          },
+          {
+            "id": "gemma4-pro:latest",
+            "name": "Gemma 4-pro latest (Local — Ollama)",
+            "api": "ollama",
+            "reasoning": false,
+            "input": ["text", "image"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 32768,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "{{PRIMARY_MODEL}}",
+        "fallbacks": [
+          "qwen3.5:9b"
+        ]
+      },
+      "models": {
+        "anthropic/claude-sonnet-4-6": {},
+        "xai/grok-4": {
+          "alias": "Grok"
+        }
+      },
+      "workspace": "/home/claire/.openclaw/workspace",
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "timeoutSeconds": 400,
+      "heartbeat": {
+        "every": "1h",
+        "model": "qwen3.5:9b",
+        "lightContext": true
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "{{TG_BOT_TOKEN}}",
+      "allowFrom": [ {{TG_ADMIN_ID}} ],
+      "groupAllowFrom": [ {{TG_ADMIN_ID}} ],
+      "groupPolicy": "allowlist",
+      "streaming": {
+        "mode": "partial"
+      }
+    }
+  },
+  "gateway": {
+    "port": 18790,
+    "mode": "local",
+    "bind": "lan",
+    "auth": {
+      "mode": "token",
+      "token": "{{GATEWAY_TOKEN}}"
+    }
+  },
+  "memory": {
+    "backend": "qmd",
+    "qmd": {
+      "includeDefaultMemory": true,
+      "sessions": {
+        "enabled": true,
+        "retentionDays": 90
+      },
+      "update": {
+        "interval": "5m",
+        "debounceMs": 15000
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "ollama": { "enabled": true },
+      "telegram": { "enabled": true }
+    }
+  }
+}

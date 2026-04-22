@@ -1,0 +1,5 @@
+#exclude local user data and logs
+agents/
+*.log
+.env
+
