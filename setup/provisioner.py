@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Central registry file to keep track of assigned ports
 REGISTRY_FILE = Path("/home/clairify/claires/setup/port_registry.json")
-START_PORT = 18794  # The starting port for your first bot
+START_PORT = 18796  # The starting port for your first bot
 
 def load_registry():
     """Loads the port registry from the JSON file."""

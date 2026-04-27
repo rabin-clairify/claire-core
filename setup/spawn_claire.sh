@@ -26,6 +26,7 @@ chmod -R 777 $BASE_PATH
 docker run -d \
   --name "claire-$USER_NAME" \
   -p "$PORT:18790" \
+  --env-file "/home/clairify/claires/setup/.env" \
   -v "$BASE_PATH/openclaw:/home/claire/.openclaw" \
   -v "$BASE_PATH/pcds:/home/claire/pcds" \
   -v "$BASE_PATH/workspace:/home/claire/.openclaw/workspace" \

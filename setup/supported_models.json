@@ -1,0 +1,16 @@
+{
+  "ollama": [
+    "qwen2.5:14b",
+    "qwen3.5:9b",
+    "qwen3.5:27b",
+    "qwen3.6:latest",
+    "gemma4:26b"
+  ],
+  "xai": [
+    "grok-4.20-beta-latest-reasoning",
+    "grok-4-1-fast"
+  ],
+  "anthropic": [],
+  "openai": [],
+  "google": []
+}

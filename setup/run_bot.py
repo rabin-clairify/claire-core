@@ -74,6 +74,7 @@ def start_bot(raw_user_name):
         "sudo", "docker", "run", "-d",
         "--name", container_name,
         "-p", f"{port}:18790",
+       "--env-file", "/home/clairify/claires/setup/.env",
         "-v", f"{base_path}/openclaw:/home/claire/.openclaw",
         "-v", f"{base_path}/pcds:/home/claire/pcds",
         "-v", f"{base_path}/workspace:/home/claire/.openclaw/workspace",

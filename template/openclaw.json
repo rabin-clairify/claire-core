@@ -49,7 +49,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "{{PRIMARY_MODEL}}",
+        "primary": "xai/grok-4-1-fast",
         "fallbacks": [
           "qwen3.5:9b"
         ]
@@ -71,7 +71,7 @@
       "timeoutSeconds": 400,
       "heartbeat": {
         "every": "1h",
-        "model": "qwen3.5:9b",
+        "model": "xai/grok-4-1-fast",
         "lightContext": true
       }
     }
@@ -121,7 +121,9 @@
   "plugins": {
     "entries": {
       "ollama": { "enabled": true },
-      "telegram": { "enabled": true }
+      "telegram": { "enabled": true },
+      "xai": { "enabled": true},
+      "bonjour": { "enabled": false }
     }
   }
 }
